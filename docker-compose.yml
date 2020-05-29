@@ -1,0 +1,18 @@
+version: '3'
+services: 
+  caddy:
+    build: 
+      context: .
+      dockerfile: ./docker/caddy.dockerfile
+    container_name: caddy_service
+    volumes: 
+      - ./docker/Caddyfile:/etc/caddy/Caddyfile
+    ports: 
+      - 80:80
+      - 443:443
+    networks: 
+      - mevn
+    
+networks: 
+  mevn:
+    driver: bridge
